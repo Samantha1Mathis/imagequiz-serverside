@@ -2,13 +2,13 @@ const express = require('express');
 //import flowers from './flowers';
 //import quizzes from './quizzes.js';
 
-
 const app = express();
 const port = process.env.PORT || 4002;
 
 app.use(express.json());
 
 let scores = [];
+
 var flowers = [
     {
         name: "Acacia",
