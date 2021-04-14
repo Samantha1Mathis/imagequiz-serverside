@@ -160,7 +160,7 @@ let generateQuizzes = () => {
 };
 let quiz = generateQuizzes();
 app.get('/flowers', (request, response) => {
-    response.json(flower);
+    response.json(flowers);
 })
 
 app.get('/quizzes', (request, response) => {
