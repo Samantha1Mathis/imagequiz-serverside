@@ -1,10 +1,13 @@
 const express = require('express');
 const flowers = require('./flowers');
 const quiz = require('./data');
+const cors = require('cors');
+
 const app = express();
 const port = process.env.PORT || 4002;
 
 app.use(express.json());
+app.use(cors());
 
 let scores = [];
 
