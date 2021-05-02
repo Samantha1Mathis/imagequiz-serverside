@@ -15,6 +15,7 @@ let generateQuestions = () => {
         };
         questions.push(question);
     }
+    console.log(questions);
     return questions;
 };
 
