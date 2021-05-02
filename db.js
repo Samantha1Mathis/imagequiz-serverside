@@ -4,7 +4,7 @@ const {Pool} = require('pg');
 let host = process.env.host;
 let database = process.env.database
 let port = process.env.port;
-let username = process.env.username; //need to switch to actual database unsername
+let username = 'fzxlgjrdkoalrm'; //need to switch to actual database unsername
 let password = process.env.password;
 
 let connectionString = `postgre://${username}:${password}@${host}:${port}/${database}`
