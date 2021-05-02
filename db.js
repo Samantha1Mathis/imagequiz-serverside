@@ -18,21 +18,21 @@ const pool = new Pool(connection);
 
 let getQuizzes = () => {
     console.log(connectionString)
-    let sql = `select * from imagequiz.questions`
+    let sql = `select * from imagequiz.questions q`
     return pool.query(sql)
     .then(result => result.rows);
 }
 
 let getFlowers = () => {
     console.log(connectionString)
-    let sql = `select * from imagequiz.flowers`
+    let sql = `select * from imagequiz.flowers f`
     return pool.query(sql)
     .then(result => result.rows);
 }
 
 let getScores = () => {
     console.log(connectionString)
-    let sql = `select * from imagequiz.scores`
+    let sql = `select * from imagequiz.scores s`
     return pool.query(sql)
     .then(result => result.rows);
 }
