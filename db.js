@@ -37,6 +37,12 @@ let getScores = () => {
     .then(result => result.rows);
 }
 
+let addScore = (customerid, quizid, score) => {
+    return pool.query('insert into imagequiz.scores(customerid, quizid, score) values ($1, $2, $3)', [customerid, quizid, score])
+    .then(() => console.log('The score was saved.'))
+    .catch(e => console.log(e));
+}
+
 let getQuiz = (quiznumber) => {
     console.log(connectionString);
     let sql = `select q.quiznumber, json_agg (json_build_object('flower', f.picture, 'choices', choices, 'answer', answer))
@@ -48,4 +54,17 @@ let getQuiz = (quiznumber) => {
     .then(result => result.rows);
 }
 
-module.exports = {getQuizzes, getQuiz, getFlowers, getScores}
+let addCustomer = (name, email, password) => {
+    return pool.query('insert into imagequiz.customers(name, email, password) values ($1, $2, $3)', [name, email, password])
+    .then(() => console.log('The customer was saved.'))
+    .catch(e => console.log(e));
+}
+
+let getCustomer = (name) => {
+    console.log(connectionString)
+    let sql = `select c.id from imagequiz.customers c where c.name = $1`;
+    return pool.query(sql, [name])
+    .then(result => result.rows);
+}
+
+module.exports = {getQuizzes, getQuiz, getFlowers, getScores, addScore, getCustomer, addCustomer}
