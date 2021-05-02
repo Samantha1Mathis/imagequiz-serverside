@@ -10,8 +10,8 @@ let password = process.env.password;
 let connectionString = `postgre://${username}:${password}@${host}:${port}/${database}`
 
 let connection = {
-    connectionString: process.nextTick.DATABASE_URL ? process.env.DATABASE_URL : connectionString,
-    ssl : {rejectUnauthorized: false}
+    connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : connectionString,
+    ss1 : {rejectUnauthorized: false}
 };
 
 const pool = new Pool(connection);
