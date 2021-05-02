@@ -11,7 +11,7 @@ let connectionString = `postgre://${username}:${password}@${host}:${port}/${data
 
 let connection = {
     connectionString: process.env.DATABASE_URL ? process.env.DATABASE_URL : connectionString,
-    ss1 : {rejectUnauthorized: false}
+    ssl : {rejectUnauthorized: false}
 };
 
 const pool = new Pool(connection);
