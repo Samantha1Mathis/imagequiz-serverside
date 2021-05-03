@@ -47,7 +47,7 @@ app.post('/score', (request, response) => {
    let score = request.body.score;
    let name = request.body.username;
     let quizid = request.body.quizID; 
-    console.log("HERE!!!");
+
     //let info = {score: score, username: request.body.username, quizId: request.body.quizID}
     //scores.push(info)
     //response.send(`The Score ${score} was added successfully`);
@@ -70,9 +70,9 @@ app.post('/customer', (request, response) => {
     let name = request.body.username;
     let email = request.body.email;
     let password = request.body.password;
-    db.addCustomer(name,email,password)
-    .then(() =>response.send(`The customer was added successfully 2`))
-    .catch(e => response.status(500).send('There was an error in saving the customer'));
+    db.addCustomer(name, email, password)
+    .then(() =>response.send(`The customer was added successfully ${email}, ${name}, ${password}`))
+    .catch(e => response.status(500).send('There was an error in adding the customer'));
 });
 
 app.listen(port, () => console.log("Listening on port " + port))
