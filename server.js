@@ -65,7 +65,7 @@ app.post('/customer', (request, response) => {
     let email = request.body.email;
     let password = request.body.password;
     db.addCustomer(name, email, password)
-    .then(() =>response.send(`The customer was added successfully ${email}, ${request.body.username}, ${password}`))
+    .then(() =>response.send(`The customer was added successfully ${request}, ${email}, ${request.body.username}, ${password}`))
     .catch(e => response.status(500).send('There was an error in adding the customer'));
 });
 
