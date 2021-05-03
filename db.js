@@ -38,7 +38,7 @@ let getScores = () => {
 }
 
 let addScore = (customerid, quizid, score) => {
-    return pool.query('insert into imagequiz.scores(customerid, quizid, score) values ($1, $2, $3)', [customerid, quizid, score])
+    return pool.query(`insert into imagequiz.scores(customerid, quizid, score) values ($1, $2, $3)`, [customerid, quizid, score])
     .then(() => console.log('The score was saved.'))
     .catch(e => console.log(e));
 }
@@ -55,7 +55,7 @@ let getQuiz = (quiznumber) => {
 }
 
 let addCustomer = (name, email, password) => {
-    return pool.query('insert into imagequiz.customers(name, email, password) values ($1, $2, $3)', [name, email, password])
+    return pool.query(`insert into imagequiz.customers(name, email, password) values ($1, $2, $3)`, [name, email, password])
     .then(() => console.log('The customer was saved.'))
     .catch(e => console.log(e));
 }
