@@ -70,7 +70,6 @@ app.post('/customer', (request, response) => {
     let name = request.body.username;
     let email = request.body.email;
     let password = request.body.password;
-    console.log(name, email, password)
     db.addCustomer(name,email,password)
     .then(() =>response.send(`The customer was added successfully 2`))
     .catch(e => response.status(500).send('There was an error in saving the customer'));
