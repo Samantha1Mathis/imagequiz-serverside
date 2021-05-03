@@ -34,7 +34,7 @@ app.get('/quizzes', (request, response) => {
 app.get('/quiz/:id', (request, response) => {
     db.getQuiz(request.params.id)
     .then(quiz => response.json(quiz))
-    .catch(e => {console.log(e); response.status(500).send('There was an error in getting the quizid')})
+    .catch(e => {console.log(e); response.status(500).send('There was an error in getting the quizid', e)})
     /*let id = request.params.id;
     let quizID = quiz[id];
     if (quizID){

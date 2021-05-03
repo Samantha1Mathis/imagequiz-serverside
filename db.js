@@ -62,7 +62,7 @@ let addCustomer = (name, email, password) => {
 
 let getCustomer = (name) => {
     console.log(connectionString)
-    let sql = `select c.id from imagequiz.customers c where c.name = $1`;
+    let sql = `select c.id from imagequiz.customers c where c.username = $1`;
     return pool.query(sql, [name])
     .then(result => result.rows);
 }
