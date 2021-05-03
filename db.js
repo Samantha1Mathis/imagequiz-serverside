@@ -17,35 +17,30 @@ let connection = {
 const pool = new Pool(connection);
 
 let getQuizzes = () => {
-    console.log(connectionString)
     let sql = `select * from imagequiz.questions q`
     return pool.query(sql)
     .then(result => result.rows);
 }
 
 let getFlowers = () => {
-    console.log(connectionString)
     let sql = `select * from imagequiz.flowers f`
     return pool.query(sql)
     .then(result => result.rows);
 }
 
 let getScores = () => {
-    console.log(connectionString)
     let sql = `select * from imagequiz.scores s`
     return pool.query(sql)
     .then(result => result.rows);
 }
 
 let addScore = (username, quizid, score) => {
-    console.log("WHAT ABOUT HERE?")
     return pool.query('insert into imagequiz.scores(cutomerid, quizid, score) values((select id from imagequiz.customers where username = $1), $2, $3)', [username, quizid, score])
     .then(() => console.log('The score was saved.'))
     .catch(e => console.log(e));
 }
 
 let getQuiz = (quiznumber) => {
-    console.log(connectionString);
     let sql = `select q.quiznumber, json_agg (json_build_object('flower', f.picture, 'choices', choices, 'answer', answer))
     from imagequiz.quizzes q
     inner join imagequiz.questions p on q.questionid = p.id 
