@@ -7,6 +7,8 @@ const db = require('./db');
 
 app.use(express.json());
 app.use(cors());
+var crypto = require('crypto');
+
 
 app.get('/', (request, response) =>{
     response.send(`Welcome to Imagequiz-Serverside`);
@@ -35,7 +37,6 @@ app.post('/score', (request, response) => {
    let score = request.body.score;
    let name = request.body.username;
     let quizid = request.body.quizID; 
-
     db.addScore(name, quizid, score)
     .then(() => response.send('The score was added'))
     .catch(e => {console.log(e); response.status(500).send('There was an error in adding the score.')});
@@ -47,7 +48,7 @@ app.post('/score', (request, response) => {
 app.post('/customer', (request, response) => {
     let name = request.body.username;
     let email = request.body.email;
-    let password = request.body.password;
+    var password = crypto.createHash('md5').update(request.body.password).digest('hex');
     db.addCustomer(name, email, password)
     .then(() =>response.send(`The customer was added successfully ${request.body}, ${email}, ${request.body.username}, ${password}`))
     .catch(e => response.status(500).send('There was an error in adding the customer'));
