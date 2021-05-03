@@ -8,9 +8,6 @@ const db = require('./db');
 
 app.use(express.json());
 app.use(cors());
-app.use(express.urlencoded());
-
-//let scores = [];
 
 app.get('/', (request, response) =>{
     response.send(`Welcome to Imagequiz-Serverside`);
@@ -29,7 +26,6 @@ app.get('/quizzes', (request, response) => {
 })
 
 app.get('/quiz/:id', (request, response) => {
-    console.log("here", request.params.id);
     db.getQuiz(request.params.id)
     .then(quiz => response.json(quiz))
     .catch(e => {console.log(e); response.status(500).send(e)})
@@ -42,7 +38,7 @@ app.post('/score', (request, response) => {
     let quizid = request.body.quizID; 
 
     db.addScore(name, quizid, score)
-    .then(() => response.send('The score was added.'))
+    .then(() => response.send('The score was added. $1, $2, $3', [score, name, quizid]))
     .catch(e => {console.log(e); response.status(500).send('There was an error in adding the score.')});
 
     
