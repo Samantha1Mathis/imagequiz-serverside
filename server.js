@@ -36,7 +36,7 @@ app.get('/quiz/:id', (request, response) => {
 app.post('/score', (request, response) => {
    let score = request.body.score;
    let name = request.body.username;
-    let quizid = request.body.quizID; 
+    let quizid = parseInt(request.body.quizID)+1; 
     db.addScore(name, quizid, score)
     .then(() => response.send('The score was added'))
     .catch(e => {console.log(e); response.status(500).send('There was an error in adding the score.')});
