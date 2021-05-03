@@ -48,11 +48,8 @@ app.post('/score', (request, response) => {
     let info = {score: score, username: request.body.username, quizId: request.body.quizID}
     scores.push(info)
     response.send(`The Score ${score} was added successfully`);
-    db.getCustomer(request.body.username)
-    .then(customerid => response.json(customerid))
-    .catch(e => response.status(500).send('There was an erorr getting the customerid'));
 
-    db.addScores(customerid, request.body.quizID, score)
+    db.addScores(request.body.username, request.body.quizID, score)
     .then(scores => response.json(scores))
     .catch(e => {console.log(e); response.status(500).send('There was an error adding the scores')})
 })

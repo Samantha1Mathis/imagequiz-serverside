@@ -37,8 +37,8 @@ let getScores = () => {
     .then(result => result.rows);
 }
 
-let addScore = (customerid, quizid, score) => {
-    return pool.query(`insert into imagequiz.scores(customerid, quizid, score) values ($1, $2, $3)`, [customerid, quizid, score])
+let addScore = (username, quizid, score) => {
+    return pool.query(`insert into imagequiz.scores(cutomerid, quizid, score) values((select id from imagequiz.customers where username = $1), $2, $3)`, [username, quizid, score])
     .then(() => console.log('The score was saved.'))
     .catch(e => console.log(e));
 }
@@ -55,16 +55,10 @@ let getQuiz = (quiznumber) => {
 }
 
 let addCustomer = (name, email, password) => {
-    return pool.query(`insert into imagequiz.customers(name, email, password) values ($1, $2, $3)`, [name, email, password])
+    return pool.query(`insert into imagequiz.customers(username, email, password) values ($1, $2, $3)`, [name, email, password])
     .then(() => console.log('The customer was saved.'))
     .catch(e => console.log(e));
 }
 
-let getCustomer = (name) => {
-    console.log(connectionString)
-    let sql = `select c.id from imagequiz.customers c where c.username = $1`;
-    return pool.query(sql, [name])
-    .then(result => result.rows);
-}
 
-module.exports = {getQuizzes, getQuiz, getFlowers, getScores, addScore, getCustomer, addCustomer}
+module.exports = {getQuizzes, getQuiz, getFlowers, getScores, addScore, addCustomer}
