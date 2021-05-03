@@ -68,6 +68,7 @@ app.post('/score', (request, response) => {
 
 app.post('/customer', (request, response) => {
     let name = request.body.username;
+    console.log(request.body.username, response.body.username);
     let email = request.body.email;
     let password = request.body.password;
     db.addCustomer(name, email, password)
