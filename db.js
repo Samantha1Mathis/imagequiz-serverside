@@ -38,6 +38,7 @@ let getScores = () => {
 }
 
 let addScore = (username, quizid, score) => {
+    console.log("WHAT ABOUT HERE?")
     return pool.query('insert into imagequiz.scores(cutomerid, quizid, score) values((select id from imagequiz.customers where username = $1), $2, $3)', [username, quizid, score])
     .then(() => console.log('The score was saved.'))
     .catch(e => console.log(e));

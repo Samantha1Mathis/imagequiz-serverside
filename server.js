@@ -47,7 +47,7 @@ app.post('/score', (request, response) => {
    let score = request.body.score;
    let name = request.body.username;
     let quizid = request.body.quizID; 
-
+    console.log("HERE!!!");
     //let info = {score: score, username: request.body.username, quizId: request.body.quizID}
     //scores.push(info)
     //response.send(`The Score ${score} was added successfully`);
