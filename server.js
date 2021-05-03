@@ -1,6 +1,4 @@
 const express = require('express');
-const flowers = require('./flowers');
-const quiz = require('./data');
 const cors = require('cors');
 
 const app = express();

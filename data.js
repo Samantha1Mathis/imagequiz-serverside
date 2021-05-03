@@ -38,6 +38,7 @@ let generateQuizzes = () => {
         ];
         quizzes.push(quiz);
     }
+    console.log(questions.length);
     return quizzes;
 };
 
