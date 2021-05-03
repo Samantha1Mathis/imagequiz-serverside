@@ -32,6 +32,7 @@ app.get('/quizzes', (request, response) => {
 })
 
 app.get('/quiz/:id', (request, response) => {
+    console.log("here", request.params.id);
     db.getQuiz(request.params.id)
     .then(quiz => response.json(quiz))
     .catch(e => {console.log(e); response.status(500).send(e)})

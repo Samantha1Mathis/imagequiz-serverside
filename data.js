@@ -15,7 +15,7 @@ let generateQuestions = () => {
         };
         questions.push(question);
     }
-    console.log(questions);
+
     return questions;
 };
 
@@ -42,6 +42,7 @@ let generateQuizzes = () => {
 };
 
 let quizzes = generateQuizzes();
+
 
 
 module.exports = quizzes
